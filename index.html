@@ -40,15 +40,13 @@
     </script>
     <script type="text/javascript">
       $(document).ready( function() {
-      	
-      	// Fetch JSON data and added to fields values
-       			$.getJSON("./src/config.json", function(jsdata) {
-           			json = jsdata;
+        
+        $.getJSON("./src/config.json", function(jsdata) {
+          json = jsdata;
       		$("#content-details").val(json.tCfg.details);
       		$("#content-state").val(json.tCfg.state);
       	});	
-      			
-      	// Event Listeners
+        
       	$("#execute-rpc").click(function() {
       		rpc.setRPC();
       		mainWindow.webContents.openDevTools()
@@ -66,9 +64,8 @@
       
       	$("#save-rpc").click(function() {
       		$.getJSON("./src/config.json", function(jsdata) {
-      			
       			jsdata.tCfg = {
-      				details: $('#content-details').val(),
+      			  details: $('#content-details').val(),
       				state: $('#content-state').val()
       			}
       
@@ -79,12 +76,10 @@
       					return;
       				}
       				alert("Saved.");
-      			}); 
-      		});	
+      			});
+      		});
       	});
-      
-      })
-      		
+      });
     </script>
   </body>
 </html>
