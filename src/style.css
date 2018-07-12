@@ -1,0 +1,15 @@
+body {
+    background: #ccc !important;
+	-webkit-app-region: drag
+}
+
+button-wrapper button {
+    display: inline;
+}
+
+.main-w {
+    padding: 15px;
+}
+button, .form-control {
+    -webkit-app-region: no-drag;
+}
