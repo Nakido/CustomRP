@@ -1,93 +1,90 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Custom Discord RPC</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./src/style.css">
-		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	</head>
-	<body>
-		<div class="main-w content">
-			<div class="row">
-				<div class="col-5">
-					<label for="content-details">Details: </label><br>
-				</div>
-				<div class="col-7">
-					<input type="text" class="form-control" id="content-details"><br>
-				</div>	
-
-				<div class="col-5">
-						<label for="content-details">State: </label>
-				</div>
-				<div class="col-7">
-						<input type="text" class="form-control" id="content-state"><br>
-				</div>	
-
-				<div class="button-wrapper col-6">
-					<button class="btn btn-primary" id="save-rpc"> Save </button>
-					<button class="btn btn-primary" id="execute-rpc"> Run </button><br><br>
-					<button class="btn btn-danger" id="execute-reset"> Restart </button>
-					<button class="btn btn-danger" id="execute-out"> Exit </button>
-				</div>	
-			</div>
-		</div>
-		
-		<script type="text/javascript">
-			window.$ = window.jQuery = require('jquery');
-			var fs = require('fs');
-			var rpc = require("./src/rpc.js");
-			var { remote, BrowserWindow, remote, shell } = require('electron');
-			var dialog = remote.dialog;
-			var mainWindow = remote.getCurrentWindow();
-		</script>
-		<script type="text/javascript">
-			$(document).ready( function() {
-				
-				// Fetch JSON data and added to fields values
-    			$.getJSON("./src/config.json", function(jsdata) {
-        			json = jsdata;
-					$("#content-details").val(json.tCfg.details);
-					$("#content-state").val(json.tCfg.state);
-				});	
-						
-				// Event Listeners
-				$("#execute-rpc").click(function() {
-					rpc.setRPC();
-					mainWindow.webContents.openDevTools()
-					mainWindow.setSize(750, 275)
-				});
-
-				$("#execute-reset").click(function() {
-					remote.app.relaunch()
-					remote.app.exit(0)
-				});
-				
-				$("#execute-out").click(function() {
-					remote.app.exit(0)
-				});
-	
-				$("#save-rpc").click(function() {
-					$.getJSON("./src/config.json", function(jsdata) {
-						
-						jsdata.tCfg = {
-							details: $('#content-details').val(),
-							state: $('#content-state').val()
-						}
-
-						fs.writeFile("./src/config.json", JSON.stringify(jsdata),  { mode: 0o755 }, function (err) {
-							if(err){
-								alert("An error ocurred updating the file: "+ err.message);
-									console.log(err);
-								return;
-							}
-							alert("Saved.");
-						}); 
-					});	
-				});
-			
-			})
-					
-		</script>
-    </body>
+  <head>
+    <title>Custom Discord RPC</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="main-w content">
+      <div class="row">
+        <div class="col-5">
+          <label for="content-details">Details: </label><br>
+        </div>
+        <div class="col-7">
+          <input type="text" class="form-control" id="content-details"><br>
+        </div>
+        <div class="col-5">
+          <label for="content-details">State: </label>
+        </div>
+        <div class="col-7">
+          <input type="text" class="form-control" id="content-state"><br>
+        </div>
+        <div class="button-wrapper col-6">
+          <button class="btn btn-primary" id="save-rpc"> Save </button>
+          <button class="btn btn-primary" id="execute-rpc"> Run </button><br><br>
+          <button class="btn btn-danger" id="execute-reset"> Restart </button>
+          <button class="btn btn-danger" id="execute-out"> Exit </button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      window.$ = window.jQuery = require('jquery');
+      var fs = require('fs');
+      var rpc = require("./src/rpc.js");
+      var { remote, BrowserWindow, remote, shell } = require('electron');
+      var dialog = remote.dialog;
+      var mainWindow = remote.getCurrentWindow();
+    </script>
+    <script type="text/javascript">
+      $(document).ready( function() {
+      	
+      	// Fetch JSON data and added to fields values
+       			$.getJSON("./src/config.json", function(jsdata) {
+           			json = jsdata;
+      		$("#content-details").val(json.tCfg.details);
+      		$("#content-state").val(json.tCfg.state);
+      	});	
+      			
+      	// Event Listeners
+      	$("#execute-rpc").click(function() {
+      		rpc.setRPC();
+      		mainWindow.webContents.openDevTools()
+      		mainWindow.setSize(750, 275)
+      	});
+      
+      	$("#execute-reset").click(function() {
+      		remote.app.relaunch()
+      		remote.app.exit(0)
+      	});
+      	
+      	$("#execute-out").click(function() {
+      		remote.app.exit(0)
+      	});
+      
+      	$("#save-rpc").click(function() {
+      		$.getJSON("./src/config.json", function(jsdata) {
+      			
+      			jsdata.tCfg = {
+      				details: $('#content-details').val(),
+      				state: $('#content-state').val()
+      			}
+      
+      			fs.writeFile("./src/config.json", JSON.stringify(jsdata),  { mode: 0o755 }, function (err) {
+      				if(err){
+      					alert("An error ocurred updating the file: "+ err.message);
+      						console.log(err);
+      					return;
+      				}
+      				alert("Saved.");
+      			}); 
+      		});	
+      	});
+      
+      })
+      		
+    </script>
+  </body>
 </html>
