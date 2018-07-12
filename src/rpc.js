@@ -6,7 +6,7 @@ built with node.js and discord-rpc
 author -  Devsaider#5593
 repo -  https://github.com/scripthubteam/DiscordCustomRP
  */
-
+ 
 const DiscordRPC = require('discord-rpc');
 const fs = require('fs');
 const parse = require('parse-duration')
