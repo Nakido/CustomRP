@@ -1,143 +1,143 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
-	<head>
-		<title>Custom Discord RPC</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./src/style.css">
-		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	</head>
-	<body>
-		<div class="main-w content">
-			<div class="row">
-				<div class="col-5">
-					<label for="content-details">Details: </label>
-				</div>
-				<div class="col-7">
-					<input type="text" class="form-control" id="content-details"><br>
-				</div>	
-				<div class="col-5">
-						<label for="content-state">State: </label>
-				</div>
-				<div class="col-7">
-						<input type="text" class="form-control" id="content-state"><br>
-				</div>	
-				<div class="col-5" id="ad1">
-					<label for="content-client">ClientID: </label>
-				</div>
-				<div class="col-7" id="ad2">
-					<input type="text" class="form-control" id="content-client"><br>
-				</div>	
-				<div class="col-5" id="ad3">
-						<label for="content-image">Image: </label>
-				</div>
-				<div class="col-7" id="ad4">
-						<input type="text" class="form-control" id="content-image"><br>
-				</div>	
-				<div class="button-wrapper col-6">
-					<button class="btn btn-primary" id="save-rpc"> Save </button>
-					<button class="btn btn-primary" id="execute-rpc"> Run </button>
-					<button class="btn btn-primary" id="execute-advanced"> Advanced Options </button><br><br>
-					<button class="btn btn-danger" id="execute-default"> Default </button>
-					<button class="btn btn-danger" id="execute-reset"> Restart </button>
-					<button class="btn btn-danger" id="execute-out"> Exit </button>
-				</div>	
-				<div class="alert alert-success" id="save-state-sucess">Saved</div>
-				<div class="alert alert-danger" id="save-state-error">Error</div>
-			</div>
-		</div>
-		
-		<script type="text/javascript">
-			window.$ = window.jQuery = require('jquery');
-			var fs = require('fs');
-			var rpc = require("./src/rpc.js");
-			var { remote, BrowserWindow, remote, shell } = require('electron');
-			var dialog = remote.dialog;
-			var mainWindow = remote.getCurrentWindow();
-			var size = mainWindow.getBounds()
-			var width = size.width
-			var height = size.height
-		</script>
-		<script type="text/javascript">
-			$(document).ready( function() {
-				
-				// Fetch JSON data and added to fields values
-    			$.getJSON("./src/config.json", function(jsdata) {
-        			json = jsdata;
-					$("#content-details").val(json.tCfg.details);
-					$("#content-state").val(json.tCfg.state);
-					$("#content-client").val(json.clientID);
-					$("#content-image").val(json.iCfg.largeKey);
-				});	
-						
-				// Event Listeners
-				$("#execute-rpc").click(function() {
-					rpc.setRPC();
-					mainWindow.webContents.openDevTools() 
-					mainWindow.setSize(width + 240, height)
-					width += 240
-					$("#execute-rpc").addClass("disabled")
-				});
-				
-				$("#execute-default").click(function() {
-					$("#content-details").val("Heya")
-					$("#content-state").val("I'm using CustomRP")
-					 $("#content-client").val("462899335412318219")
-					 $("#content-image").val("test_large")
-				});
-				
-				$("#execute-reset").click(function() {
-					remote.app.relaunch()
-					remote.app.exit(0)
-				});
-				
-				$("#execute-out").click(function() {
-					remote.app.exit(0)
-				});
-				
-				$("#execute-advanced").click(function() {
-					mainWindow.setSize(width, height + 125)
-					height += 125
-					$("#execute-advanced").addClass("disabled")
-					$("#ad1, #ad2, #ad3, #ad4").css({"display": "block"})
-				});
-	
-				$("#save-rpc").click(function() {
-					$("#save-rpc").addClass("disabled")
-					$.getJSON("./src/config.json", function(jsdata) {
-						jsdata = {
-							tCfg: {
-								details: $("#content-details").val(),
-								state: $("#content-state").val()
-							},
-							iCfg: {
-								smallOptions: "active",
-								smallKey: "wf-unitone",
-								smallText: "uwu",
-								largeOptions: "active",
-								largeKey: $("#content-image").val(),
-								largeText: "CustomRP"
-							},
-							timeCfg: {
-								timeType: "start",
-								whatTime: "0m"
-							},
-							clientID: $("#content-client").val(),
-						}
-
-						fs.writeFile("./src/config.json", JSON.stringify(jsdata),  { mode: 0o755 }, function (err) {
-							if(err){
-								$("#save-state-error").css({"display": "block", "animation": "fade 4s linear forwards"});
-								console.log(err);
-								mainWindow.webContents.openDevTools()
-								return;
-							}
-							$("#save-state-sucess").css({"display": "block", "animation": "fade 4s linear forwards"});
-						}); 
-					});	
-				});	
-			})
-			
-		</script>
-    </body>
+   <head>
+      <title>Custom Discord RPC</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./src/style.css">
+      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+   </head>
+   <body>
+      <div class="main-w content">
+         <div class="row">
+            <div class="col-5">
+               <label for="content-details">Details: </label>
+            </div>
+            <div class="col-7">
+               <input type="text" class="form-control" id="content-details"><br>
+            </div>
+            <div class="col-5">
+               <label for="content-state">State: </label>
+            </div>
+            <div class="col-7">
+               <input type="text" class="form-control" id="content-state"><br>
+            </div>
+            <div class="col-5" id="ad1">
+               <label for="content-client">ClientID: </label>
+            </div>
+            <div class="col-7" id="ad2">
+               <input type="text" class="form-control" id="content-client"><br>
+            </div>
+            <div class="col-5" id="ad3">
+               <label for="content-image">Image: </label>
+            </div>
+            <div class="col-7" id="ad4">
+               <input type="text" class="form-control" id="content-image"><br>
+            </div>
+            <div class="button-wrapper col-6">
+               <button class="btn btn-primary" id="save-rpc"> Save </button>
+               <button class="btn btn-primary" id="execute-rpc"> Run </button>
+               <button class="btn btn-primary" id="execute-advanced"> Advanced Options </button><br><br>
+               <button class="btn btn-danger" id="execute-default"> Default </button>
+               <button class="btn btn-danger" id="execute-reset"> Restart </button>
+               <button class="btn btn-danger" id="execute-out"> Exit </button>
+            </div>
+            <div class="alert alert-success" id="save-state-sucess">Saved</div>
+            <div class="alert alert-danger" id="save-state-error">Error</div>
+         </div>
+      </div>
+      <script type="text/javascript">
+         window.$ = window.jQuery = require('jquery');
+         var fs = require('fs');
+         var rpc = require("./src/rpc.js");
+         var { remote, BrowserWindow, remote, shell } = require('electron');
+         var dialog = remote.dialog;
+         var mainWindow = remote.getCurrentWindow();
+         var size = mainWindow.getBounds()
+         var width = size.width
+         var height = size.height
+      </script>
+      <script type="text/javascript">
+         $(document).ready( function() {
+         	
+         	// Fetch JSON data and added to fields values
+          			$.getJSON("./src/config.json", function(jsdata) {
+              			json = jsdata;
+         		$("#content-details").val(json.tCfg.details);
+         		$("#content-state").val(json.tCfg.state);
+         		$("#content-client").val(json.clientID);
+         		$("#content-image").val(json.iCfg.largeKey);
+         	});	
+         			
+         	// Event Listeners
+         	$("#execute-rpc").click(function() {
+         		rpc.setRPC();
+         		mainWindow.webContents.openDevTools() 
+         		mainWindow.setSize(width + 240, height)
+         		width += 240
+         		$("#execute-rpc").addClass("disabled")
+         	});
+         	
+         	$("#execute-default").click(function() {
+         		$("#content-details").val("Heya")
+         		$("#content-state").val("I'm using CustomRP")
+         		 $("#content-client").val("462899335412318219")
+         		 $("#content-image").val("test_large")
+         	});
+         	
+         	$("#execute-reset").click(function() {
+         		remote.app.relaunch()
+         		remote.app.exit(0)
+         	});
+         	
+         	$("#execute-out").click(function() {
+         		remote.app.exit(0)
+         	});
+         	
+         	$("#execute-advanced").click(function() {
+         		mainWindow.setSize(width, height + 125)
+         		height += 125
+         		$("#execute-advanced").addClass("disabled")
+         		$("#ad1, #ad2, #ad3, #ad4").css({"display": "block"})
+         	});
+         
+         	$("#save-rpc").click(function() {
+         		$("#save-rpc").addClass("disabled")
+         		$.getJSON("./src/config.json", function(jsdata) {
+         			jsdata = {
+         				tCfg: {
+         					details: $("#content-details").val(),
+         					state: $("#content-state").val()
+         				},
+         				iCfg: {
+         					smallOptions: "active",
+         					smallKey: "wf-unitone",
+         					smallText: "uwu",
+         					largeOptions: "active",
+         					largeKey: $("#content-image").val(),
+         					largeText: "CustomRP"
+         				},
+         				timeCfg: {
+         					timeType: "start",
+         					whatTime: "0m"
+         				},
+         				clientID: $("#content-client").val(),
+         			}
+         
+         			fs.writeFile("./src/config.json", JSON.stringify(jsdata),  { mode: 0o755 }, function (err) {
+         				if(err){
+         					$("#save-state-error").css({"display": "block", "animation": "fade 4s linear forwards"});
+         					console.log(err);
+         					mainWindow.webContents.openDevTools()
+         					return;
+         				}
+         				$("#save-state-sucess").css({"display": "block", "animation": "fade 4s linear forwards"});
+         			}); 
+         		});	
+         	});	
+         })
+         
+      </script>
+   </body>
 </html>
+
