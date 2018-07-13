@@ -141,3 +141,22 @@
    </body>
 </html>
 
+<<<<<<< HEAD
+=======
+						fs.writeFile("./src/config.json", JSON.stringify(jsdata),  { mode: 0o755 }, function (err) {
+							if(err){
+								$("#save-state-error").css({"display": "block", "animation": "fade 4s linear forwards"});
+								console.log(err);
+								mainWindow.webContents.openDevTools()
+								return;
+							}
+							$("#save-state-sucess").css({"display": "block", "animation": "fade 4s linear forwards"});
+						}); 
+					});	
+				});	
+			})
+			
+		</script>
+    </body>
+</html>
+>>>>>>> 15562458c85f2a788ce8e35d5f2e263adcbbeba3

@@ -1,7 +1,7 @@
 # CustomRP
 CustomRP is a simple program built in Node.js and [Electron](https://electronjs.org) using [DiscordCustomRP](https://github.com/scripthubteam/DiscordCustomRP) library.
 
-![](https://cdn.discordapp.com/attachments/198291975663779842/466813279516229634/unknown.png)
+![](https://cdn.discordapp.com/attachments/198291975663779842/467180967661010965/unknown.png)
 
 ![](https://cdn.discordapp.com/attachments/198291975663779842/466813367470915625/unknown.png)
 
@@ -24,6 +24,10 @@ CustomRP is a simple program built in Node.js and [Electron](https://electronjs.
 - **State:** Second field text.
 - **Save:** Save `Details` and `State` text.
 - **Run:** Start Rich Presence.
+- **Advanced Options:** Show `ClientID` and `Image` fields.
+  - **ClientID:** App ID, get one here: https://discordapp.com/developers/applications/me
+  - **Image:** Image key from RP Assets.
+- **Default:** Revert fields to default values.
 - **Restart:** Restart the app and stops Rich Presence.
 - **Exit:** Completely closes the app.
 
