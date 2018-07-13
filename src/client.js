@@ -12,7 +12,7 @@ $(document).ready( function() {
 	
 	// Fetch JSON data and added to fields values
  	$.getJSON("./src/config.json", function(jsdata) {
-     	json = jsdata;
+    json = jsdata;
 		$("#content-details").val(json.tCfg.details);
 		$("#content-state").val(json.tCfg.state);
 		$("#content-client").val(json.clientID);
@@ -31,8 +31,8 @@ $(document).ready( function() {
 	$("#execute-default").click(function() {
 		$("#content-details").val("Heya")
 		$("#content-state").val("I'm using CustomRP")
-		 $("#content-client").val("462899335412318219")
-		 $("#content-image").val("test_large")
+		$("#content-client").val("462899335412318219")
+		$("#content-image").val("test_large")
 	});
 	
 	$("#execute-reset").click(function() {
