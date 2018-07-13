@@ -1,15 +1,38 @@
 body {
-	background: #ccc !important;
+    background: #ccc !important;
 	-webkit-app-region: drag
 }
 
 button-wrapper button {
-	display: inline;
+    display: inline;
 }
 
 .main-w {
-	padding: 15px;
+    padding: 15px;
 }
 button, .form-control {
-	-webkit-app-region: no-drag;
+    -webkit-app-region: no-drag;
+}
+.alert {
+	height: 55px;
+}
+#save-state-sucess, #save-state-error {
+	display: none;
+	opacity: 0;
+}
+
+@keyframes fade {
+	0%, 60% { 
+		opacity: 0; 
+	}
+	30% { 
+		opacity: 1; 
+	}
+	100% {
+		display: none;
+	}
+}
+
+#ad1, #ad2, #ad3, #ad4 {
+	display:none;
 }

@@ -1,6 +1,6 @@
 {
-  "name": "Custom-Discord-RPC",
-  "version": "1.0.0",
+  "name": "CustomRP",
+  "version": "1.2.0",
   "description": "Discord Rich Presence App",
   "main": "main.js",
   "scripts": {
