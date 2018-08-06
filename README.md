@@ -1,9 +1,9 @@
 # CustomRP
 CustomRP is a simple program built in Node.js and [Electron](https://electronjs.org) using [DiscordCustomRP](https://github.com/scripthubteam/DiscordCustomRP) library.
 
-![](https://cdn.discordapp.com/attachments/198291975663779842/467180967661010965/unknown.png)
+![](https://cdn.discordapp.com/attachments/163157006432206849/475896243109756938/unknown.png)
 
-![](https://cdn.discordapp.com/attachments/198291975663779842/466813367470915625/unknown.png)
+![](https://cdn.discordapp.com/attachments/163157006432206849/475896434709889026/unknown.png)
 
 ## Installation
 
@@ -32,3 +32,9 @@ CustomRP is a simple program built in Node.js and [Electron](https://electronjs.
 - **Exit:** Completely closes the app.
 
 > Special thanks to DrBlastula#0736 for helping me with listeners and JSON reading issues and [Devsaider](https://github.com/MrDevsaider) for making DiscordCustomRP.
+
+## Changelog
+
+- `1.0.0` Initial release
+    - `1.2.0` Added new fuctions and minor fixes
+    - `1.3.0` Updated [DiscordCustomRP](https://github.com/scripthubteam/DiscordCustomRP) to 2.0.0
