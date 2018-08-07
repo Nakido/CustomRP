@@ -1,1 +1,15 @@
-{"textCfg":{"details":"Heya","state":"I'm using CustomRP"},"imageCfg":{"largeKey":"test_large","largeText":"CustomRP"},"timeCfg":{"timeType":"start","whatTime":"0m"},"clientID":"462899335412318219"}
+{
+	"textCfg":{
+		"details":"Heya",
+		"state":"I'm using CustomRP"
+	},
+	"imageCfg":{
+		"largeKey":"test_large",
+		"largeText":"CustomRP"
+	},
+	"timeCfg":{
+		"timeType":"start",
+		"whatTime":"0m"
+	},
+	"clientID":"462899335412318219"
+}

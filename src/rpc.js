@@ -30,7 +30,7 @@ async function setActivity() {
   if (!rpc)
     return;
 
-  
+
   var activity = {
     details: config.textCfg.details,
     state: config.textCfg.state,

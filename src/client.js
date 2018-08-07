@@ -9,18 +9,12 @@ var width = size.width;
 var height = size.height;
 
 $(document).ready(function() {
-	
+
 	// Fetch JSON data and added to fields values
  	$.getJSON("./src/config.json", function(jsdata) {
-<<<<<<< HEAD
     json = jsdata;
 		$("#content-details").val(json.textCfg.details);
 		$("#content-state").val(json.textCfg.state);
-=======
-		json = jsdata;
-		$("#content-details").val(json.tCfg.details);
-		$("#content-state").val(json.tCfg.state);
->>>>>>> 880b9ab53e0d122e6d93f3b195397719de6b98f7
 		$("#content-client").val(json.clientID);
 		$("#content-image").val(json.imageCfg.largeKey);
 	});	
@@ -33,23 +27,23 @@ $(document).ready(function() {
 		width += 240;
 		$("#execute-rpc").addClass("disabled");
 	});
-	
+
 	$("#execute-default").click(function() {
 		$("#content-details").val("Heya");
 		$("#content-state").val("I'm using CustomRP");
 		$("#content-client").val("462899335412318219");
 		$("#content-image").val("test_large");
 	});
-	
+
 	$("#execute-reset").click(function() {
 		remote.app.relaunch();
 		remote.app.exit(0);
 	});
-	
+
 	$("#execute-out").click(function() {
 		remote.app.exit(0);
 	});
-	
+
 	$("#execute-advanced").click(function() {
 		mainWindow.setSize(width, height + 125);
 		height += 125;
@@ -93,8 +87,4 @@ $(document).ready(function() {
 			});
 		});
 	});
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 880b9ab53e0d122e6d93f3b195397719de6b98f7
